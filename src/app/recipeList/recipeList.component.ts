@@ -18,4 +18,6 @@ export class RecipeComponent {
     displayForm: boolean = false;
 
     constructor(private ps: ProofreaderService){};
+
+    checkDirty(){ return this.ps.hasSubmitted }
 }

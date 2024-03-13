@@ -97,7 +97,8 @@ const LANG_ENUS = "en-US"
 })
 export class ProofreaderService {
     textErrors: TextError[] = [];
-
+    hasSubmitted: boolean = false;
+    
     headers = new HttpHeaders({
         'Content-Type': 'application/x-www-form-urlencoded'
     })
@@ -137,6 +138,7 @@ export class ProofreaderService {
                     for(let err of matches){
                         this.textErrors.push(err as TextError)
                     }
+                    this.hasSubmitted = true;
                 },
                 error: (e) =>{
                     console.log(e)

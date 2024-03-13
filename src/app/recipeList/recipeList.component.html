@@ -11,9 +11,17 @@
         </table>
     </ng-template>
     <ng-template #recipeTableEmpty>
-        <div id="recipeListEmpty">
-            No errors found. Submit new text for proofreading using the input field above.
-        </div>
+        <div *ngIf="!this.checkDirty() then clean else dirty"></div>
+        <ng-template #clean>
+            <div id="recipeListEmpty">
+                Errors detected within the submitted text will be listed here. Initial submissions may take a while.
+            </div>
+        </ng-template>
+        <ng-template #dirty>
+            <div id="recipeListEmpty">
+                No errors detected. Submit new text for proofreading in the form above.
+            </div>
+        </ng-template>
     </ng-template>
 
 <!-- <div *ngIf="modalEntry" class="container modal">
