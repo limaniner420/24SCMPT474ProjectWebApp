@@ -1,0 +1,29 @@
+<div *ngIf="textErrors.length > 0 then recipeTableNormal else recipeTableEmpty"></div>
+    <ng-template #recipeTableNormal>
+        <table id="recipeList">
+            <tr class="recipeEntry" *ngFor="let e of textErrors">
+                <td class="recipeName">
+                    {{e.message}} <br>
+                    Context: {{e.context.text}} <br>
+                    Error: {{e.context.text.substring(e.context.offset, e.context.offset + e.context.length)}} 
+                </td>
+            </tr>
+        </table>
+    </ng-template>
+    <ng-template #recipeTableEmpty>
+        <div id="recipeListEmpty">
+            No errors found. Submit new text for proofreading using the input field above.
+        </div>
+    </ng-template>
+
+<!-- <div *ngIf="modalEntry" class="container modal">
+    <div class="modalContent">
+        <h3>{{modalEntry.name}}</h3>
+        <h4>Ingredients:</h4>
+        <p>{{modalEntry.ings}}</p>
+        <h4>Instructions:</h4>
+        <p>{{modalEntry.inst}}</p>
+        <h6>Last modified: {{modalEntry.lmt!}}</h6>
+        <button (click)="hideRecipe()">Close</button>
+    </div>
+</div> -->

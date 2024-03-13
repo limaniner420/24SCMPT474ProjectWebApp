@@ -1,0 +1,27 @@
+.container{
+    background-color: white;
+    border-radius: 5px;
+    padding: 1em;
+}
+
+#recipeForm{
+    margin-top: .5em;
+    margin-bottom: .5em;
+    border: 1px solid black;
+    border-radius: 5px;
+    padding: 1em;
+}
+form>*{
+    display: inline-block;
+}
+form>label{
+    width: 150px;
+}
+form>#recipeName{
+    width: 200px;
+}
+form>textarea{
+    height: 100px;
+    width: 100%;
+    resize: none;
+}
