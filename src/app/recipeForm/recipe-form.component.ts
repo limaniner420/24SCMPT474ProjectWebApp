@@ -2,7 +2,6 @@ import { Component } from '@angular/core';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { ProofreaderService } from '../proofreader/proofreader.service';
-import { DatabaseService } from '../database/database.service';
 
 @Component({
   selector: 'app-recipe-form',
@@ -20,7 +19,7 @@ export class RecipeFormComponent {
         textPublicise: [false]
     })
 
-    constructor(private builder: FormBuilder, private ps: ProofreaderService, private dbs: DatabaseService){};
+    constructor(private builder: FormBuilder, private ps: ProofreaderService){};
 
     textSubmit(){
         let form = this.textForm
