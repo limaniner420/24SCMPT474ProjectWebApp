@@ -1,5 +1,8 @@
-label[for=comments]{
-    padding-top: 10px;
+#commentForm{
+    margin-top: 10em;
+    margin-bottom: .5em;
+    border-radius: 5px;
+    padding: 1em;
 }
 
 textarea#comments{
