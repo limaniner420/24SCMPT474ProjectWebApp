@@ -17,8 +17,14 @@ export class CommentboxComponent{
   });
 
   commentSubmit(comment:string){
-    alert("Comment submitted");
-    console.log(comment);
+    if(comment.length === 0){
+      alert("Comment cannot be empty");
+      console.log("Comment cannot be empty");
+    }
+    else{
+      alert("Comment submitted");
+      console.log(comment);
+    }
   }
 
 }
