@@ -16,15 +16,9 @@ export class CommentboxComponent{
     comment: ['', Validators.required],
   });
 
-  commentSubmit(){
-    let form = this.form;
-    if(!form){
-        alert("Text input missing.")
-        return;
-    }
-    else{
-      console.log(form);
-    }
+  commentSubmit(comment:string){
+    alert("Comment submitted");
+    console.log(comment);
   }
 
 }

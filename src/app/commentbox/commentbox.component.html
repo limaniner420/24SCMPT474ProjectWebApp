@@ -1,7 +1,7 @@
 <div id="commentForm">
     <form [formGroup]="form">
         <div><label for="comments">Add comment:</label></div>
-        <div><textarea type="text" id="comments" formControlName="comments" required></textarea></div>
+        <div><textarea type="text" #commentInput id="comments" formControlName="comments" required></textarea></div>
     </form>
-    <button (click)="commentSubmit()">Add comment</button>
+    <button (click)="commentSubmit(commentInput.value)">Add comment</button>
 </div>
