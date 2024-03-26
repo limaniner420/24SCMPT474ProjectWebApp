@@ -1,0 +1,12 @@
+<h2>Login</h2>
+<div id="loginForm">
+    <form [formGroup]="loginForm">
+        <div><label for="firstName">First Name:</label></div>
+        <div><input type="text" #firstNameInput id="firstName" formControlName="firstName" required></div>
+        <div><label for="lastName">Last Name:</label></div>
+        <div><input type="text" #lastNameInput id="lastName" formControlName="lastName" required></div>
+        <div><label for="studentID">Student ID:</label></div>
+        <div><input type="text" #studentIDInput id="studentID" formControlName="studentID" required></div>
+    </form>
+    <button (click)="loginSubmit(firstNameInput.value, lastNameInput.value, studentIDInput.value)">Login</button>
+</div>
