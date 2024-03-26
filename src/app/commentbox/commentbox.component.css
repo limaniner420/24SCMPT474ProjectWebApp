@@ -1,0 +1,9 @@
+label[for=comments]{
+    padding-top: 10px;
+}
+
+textarea#comments{
+    height: 100px;
+    width: 50%;
+    resize: none;
+}
