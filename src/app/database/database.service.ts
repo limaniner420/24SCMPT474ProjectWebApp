@@ -6,7 +6,7 @@ import { Observable } from 'rxjs';
 //const DATABASE_URL = "https://dbserver-4ora5oxrra-uc.a.run.app/"
 const DATABASE_URL = "http://localhost:8080/"
 
-const TEST_STUDENT_ID = "123456789"
+const TEST_STUDENT_ID = ""
 
 @Injectable({
     providedIn: 'root',

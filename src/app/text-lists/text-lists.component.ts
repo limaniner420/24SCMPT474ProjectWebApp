@@ -1,10 +1,12 @@
-import { Component, inject } from '@angular/core';
+import { Component } from '@angular/core';
 import { textList } from '../sample_texts';
 import { CommonModule } from '@angular/common';
 import { MatListModule } from '@angular/material/list';
 import { MatDialog } from '@angular/material/dialog';
 import { DialogComponent } from '../dialog/dialog.component';
 import { DatabaseService } from '../database/database.service';
+import { MessageServiceService } from '../message-service.service';
+import { Subscription } from 'rxjs';
 
 
 @Component({
@@ -14,12 +16,27 @@ import { DatabaseService } from '../database/database.service';
   templateUrl: './text-lists.component.html',
   styleUrl: './text-lists.component.css'
 })
-export class TextListsComponent {
+export class TextListsComponent{
 
-  textlists : any;
+  textlists : any = [];
   temp_commentreply: any;
+  subscription: Subscription;
 
-  constructor(private dialog: MatDialog, private dbs: DatabaseService){
+  constructor(private dialog: MatDialog, private dbs: DatabaseService, private messageService: MessageServiceService){
+    this.subscription = this.messageService.getMessage().subscribe(message =>{
+      this.dbs.getText().subscribe(
+        (response) => {
+          console.log(response);
+          this.textlists = response;
+          this.reloadData();
+      }, error => {
+          console.error(error);
+      });
+    })
+  }
+
+  reloadData(){
+    this.textlists = [...this.textlists];
   }
 
   ngOnInit(){
@@ -60,11 +77,28 @@ export class TextListsComponent {
 
     }, error => {
         console.error(error);
+        console.log("No comments");
+
+        const dialogRef = this.dialog.open(DialogComponent, {
+          data: {title: text.TextContent, commentList: [], textID: text.TextId},
+          width: '1200px',
+          maxHeight: '700px',
+        });
+
+        dialogRef.afterClosed().subscribe((result)=>{
+          console.log('The dialog was closed');
+          console.log(result);
+        })
     });
   }
 
   printing(){
     console.log(this.textlists);
   }
+
+  ngOnDestroy() {
+    // unsubscribe to ensure no memory leaks
+   this.subscription.unsubscribe();
+ }
 
 }

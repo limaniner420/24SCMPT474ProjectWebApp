@@ -3,6 +3,7 @@ import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { ProofreaderService } from '../proofreader/proofreader.service';
 import { DatabaseService } from '../database/database.service';
+import { MessageServiceService } from '../message-service.service';
 
 
 @Component({
@@ -21,7 +22,7 @@ export class RecipeFormComponent {
         textPublicise: [false]
     })
 
-    constructor(private builder: FormBuilder, private ps: ProofreaderService, private dbs: DatabaseService){};
+    constructor(private builder: FormBuilder, private ps: ProofreaderService, private dbs: DatabaseService, private messageService: MessageServiceService){};
 
     textSubmit(){
         let form = this.textForm
@@ -34,6 +35,9 @@ export class RecipeFormComponent {
         this.ps.proofread(formVValidated.textField)
         if((<HTMLInputElement>document.getElementById('publishCheckBox')).checked){
             this.dbs.submitText(formVValidated.textField)
+
+            //Update text list
+            this.messageService.passclick();
         }
     }
 
