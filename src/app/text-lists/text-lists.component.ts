@@ -1,9 +1,10 @@
-import { Component } from '@angular/core';
-import { textList, textlists } from '../sample_texts';
+import { Component, inject } from '@angular/core';
+import { textList } from '../sample_texts';
 import { CommonModule } from '@angular/common';
 import { MatListModule } from '@angular/material/list';
 import { MatDialog } from '@angular/material/dialog';
 import { DialogComponent } from '../dialog/dialog.component';
+import { DatabaseService } from '../database/database.service';
 
 
 @Component({
@@ -14,19 +15,56 @@ import { DialogComponent } from '../dialog/dialog.component';
   styleUrl: './text-lists.component.css'
 })
 export class TextListsComponent {
-  textlists = [...textlists];
 
-  constructor(private dialog: MatDialog){}
+  textlists : any;
+  temp_commentreply: any;
 
-  seeComment(text: textList): void{
-    const dialogRef = this.dialog.open(DialogComponent, {
-      data: {title: text.title, commentList: text.comments},
+  constructor(private dialog: MatDialog, private dbs: DatabaseService){
+  }
+
+  ngOnInit(){
+    this.dbs.getText().subscribe(
+      (response) => {
+        console.log(response);
+        this.textlists = response;
+    }, error => {
+        console.error(error);
     });
+  }
 
-    dialogRef.afterClosed().subscribe((result)=>{
-      console.log('The dialog was closed');
-      console.log(result);
-    })
+  // Need to load the comments here by getting them using textID
+  seeComment(text: textList): void{
+    this.dbs.get_comments(text.TextId).subscribe(
+      // Waiting for response
+      (response) => {
+
+        console.log(response);
+        this.temp_commentreply = response;
+
+        let temp_comment = [];
+        for (let i=0; i < this.temp_commentreply.length; i++){
+          temp_comment.push(this.temp_commentreply[i].CommentContent);
+        }
+
+        const dialogRef = this.dialog.open(DialogComponent, {
+          data: {title: text.TextContent, commentList: temp_comment, textID: text.TextId},
+          width: '1200px',
+          maxHeight: '700px',
+        });
+
+        dialogRef.afterClosed().subscribe((result)=>{
+          console.log('The dialog was closed');
+          console.log(result);
+        })
+
+
+    }, error => {
+        console.error(error);
+    });
+  }
+
+  printing(){
+    console.log(this.textlists);
   }
 
 }

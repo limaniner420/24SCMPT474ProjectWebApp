@@ -1,27 +1,34 @@
 export interface textList {
-    title: string;
-    introduction: string;
-    body: string;
-    comments: string[];
+    StudentId: string;
+    TextContent: string;
+    TextId: string;
   }
+
   
-  export const textlists = [
-    {
-        title: 'First text',
-        introduction: 'This text is the first',
-        body: 'It was a dark and stormy night',
-        comments: ['What are these 1', 'Comment number 2']
-    },
-    {
-        title: 'Second text',
-        introduction: 'This text is the second',
-        body: 'It was a bright and sunny day',
-        comments: ['AAAAAAAAAAAAAAAAAAAAAAAAAAAA 2']
-    },
-    {
-        title: 'Third text',
-        introduction: 'This text is the third',
-        body: 'What is all of this?',
-        comments: ['Only comment for 3']
-    }
-  ];
+//   export const textlists = [
+//     {
+//         textID: 'tetxkjvbkgf123',
+//         TextContent: `Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's
+//          standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a
+//           type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially
+//            unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop
+//             publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+//             Round 2 Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's
+//          standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a
+//           type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially
+//            unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop
+//             publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+//             Round 2.`,
+//         comments: ['What are these 1', 'Comment number 2', 'AAAAAAAAAAAAAAAABBBBBBBBBBBBBBBBBCCCCCCCCCCCCCC DDDDDDDDDDD EEEEEEEEEEEEEFFFFFF', '1', '2', '3', '4', '5', '6', 'over']
+//     },
+//     {
+//         textID: 'Second text',
+//         TextContent: 'This text is the second',
+//         comments: ['AAAAAAAAAAAAAAAAAAAAAAAAAAAA 2']
+//     },
+//     {
+//         textID: 'Third text',
+//         TextContent: 'This text is the third',
+//         comments: ['Only comment for 3']
+//     }
+//   ];

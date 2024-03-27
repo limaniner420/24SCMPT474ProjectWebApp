@@ -1,3 +1,8 @@
 h3{
     padding-top: 2em;
 }
+
+p{
+    max-height: 100px;
+    overflow-y: scroll;
+}

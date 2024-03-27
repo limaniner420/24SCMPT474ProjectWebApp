@@ -1,20 +1,17 @@
 <h2>List of texts</h2>
+<!-- <button (click)="printing()">click me</button> -->
+<div *ngFor="let text of textlists">
+    <h3>
+        <a title="Comments">
+            {{text.TextId}}
+        </a>
+    </h3>
 
-<!--mat-list-->
-    <!--mat-list-item--><div *ngFor="let text of textlists">
-        <h3>
-            <a title="Comments">
-                {{text.title}}
-            </a>
-        </h3>
+    <p mat-line *ngIf="text.TextContent">
+        {{text.TextContent}}
+    </p>
 
-        <p mat-line *ngIf="text.introduction">
-            {{text.introduction}}
-        </p>
-
-        <button mat-button type="button" (click)="seeComment(text)">
-        View Comments
-        </button>
-
-    <!--/mat-list-item--><div>
-<!--/mat-list-->
+    <button mat-button type="button" (click)="seeComment(text)">
+    View Comments
+    </button>
+<div>

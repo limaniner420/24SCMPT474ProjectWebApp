@@ -7,6 +7,6 @@
 
 textarea#comments{
     height: 100px;
-    width: 50%;
+    width: 600px;
     resize: none;
 }

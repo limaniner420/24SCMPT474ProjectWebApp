@@ -1,6 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, Inject } from '@angular/core';
 import { ReactiveFormsModule, FormBuilder, Validators } from '@angular/forms';
 import { CommonModule } from '@angular/common';
+import { DatabaseService } from '../database/database.service';
+import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-commentbox',
@@ -10,20 +12,22 @@ import { CommonModule } from '@angular/common';
   styleUrl: './commentbox.component.css'
 })
 export class CommentboxComponent{
-  constructor(private fb: FormBuilder){}
+  constructor(private fb: FormBuilder, private dbs: DatabaseService, @Inject(MAT_DIALOG_DATA) public data: any){}
 
   form = this.fb.group({
     comment: ['', Validators.required],
   });
 
   commentSubmit(comment:string){
-    if(comment.length === 0){
+    if(comment.length == 0){
       alert("Comment cannot be empty");
       console.log("Comment cannot be empty");
     }
     else{
       alert("Comment submitted");
       console.log(comment);
+      console.log(this.data.textID)
+      this.dbs.submitComment(this.data.textID, comment);
     }
   }
 
