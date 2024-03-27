@@ -11,16 +11,19 @@ const TEST_STUDENT_ID = "123456789"
 })
 export class DatabaseService {
     headers = new HttpHeaders({
-        'Content-Type': 'application/x-www-form-urlencoded'
+        'Content-Type': 'application/json'
     })
     options = { headers: this.headers }
 
     constructor(private http: HttpClient) { }
 
     submitText(text: string): void {
-        const body = new HttpParams().set('TextContent', text)
-            .set('StudentID', TEST_STUDENT_ID);
-        this.http.post(DATABASE_URL + 'text/', body.toString(), this.options).subscribe(response => {
+        const body = {
+            'TextContent': text,
+            'StudentID': TEST_STUDENT_ID
+        };
+        console.log(body);
+        this.http.post(DATABASE_URL + 'text/', body, this.options).subscribe(response => {
             console.log(response);
         }, error => {
             console.error(error);
