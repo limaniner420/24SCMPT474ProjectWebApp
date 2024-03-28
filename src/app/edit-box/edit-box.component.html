@@ -1,0 +1,9 @@
+<div id="editForm">
+    <form [formGroup]="textForm">
+        <div>
+        <label for="textField">Text to edit:</label>
+        </div>
+        <textarea type="text" id="textField" formControlName="textField" required></textarea>
+    </form>
+    <button (click)="editSubmit()">Submit Edit</button>
+</div>

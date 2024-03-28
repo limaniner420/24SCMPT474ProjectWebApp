@@ -7,6 +7,7 @@ import { DialogComponent } from '../dialog/dialog.component';
 import { DatabaseService } from '../database/database.service';
 import { MessageServiceService } from '../message-service.service';
 import { Subscription } from 'rxjs';
+import { EditDialogComponent } from '../edit-dialog/edit-dialog.component';
 
 
 @Component({
@@ -93,6 +94,19 @@ export class TextListsComponent{
           console.log(result);
         })
     });
+  }
+
+  editText(text: textList): void{
+    const dialogRef = this.dialog.open(EditDialogComponent, {
+      data: {title: text.TextContent, textID: text.TextId},
+      width: '1200px',
+      height: '700px',
+    });
+
+    dialogRef.afterClosed().subscribe((result)=>{
+      console.log('The dialog was closed');
+      console.log(result);
+    })
   }
 
   deleteComment(text: textList): void{

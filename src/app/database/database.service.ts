@@ -79,4 +79,22 @@ export class DatabaseService {
         });
     }
 
+    editText(textID:string, text:string){
+        let data = {
+            TextContent: text,
+            StudentId:'',
+        }
+
+        this.http.put(DATABASE_URL + 'text/' + textID, data, this.options).subscribe(response => {
+            console.log(response);
+            //Update text list
+            this.messageService.passclick();
+        }, error => {
+            console.error(error);
+            //Update text list
+            this.messageService.passclick();
+        });
+
+    }
+
 }

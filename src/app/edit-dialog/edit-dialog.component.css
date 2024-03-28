@@ -1,0 +1,10 @@
+h2{
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    max-height: 300px;
+    overflow-y : scroll;
+}
+
+.mat-dialog-content {
+    height: 500px;
+}
