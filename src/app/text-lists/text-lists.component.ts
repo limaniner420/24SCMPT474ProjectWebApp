@@ -95,6 +95,17 @@ export class TextListsComponent{
     });
   }
 
+  deleteComment(text: textList): void{
+    this.dbs.deleteText(text.TextId);
+    for (let i = 0; i < this.textlists.length; i++){
+      if (this.textlists[i].TextId === text.TextId){
+        this.textlists.splice(i, 1);
+        break;
+      }
+    }
+    
+  }
+
   printing(){
     console.log(this.textlists);
   }

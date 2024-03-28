@@ -37,6 +37,14 @@ export class DatabaseService {
         });
     }
 
+    deleteText(textID: string): void {
+        this.http.delete(DATABASE_URL + 'text/' + textID, this.options).subscribe(response => {
+            console.log(response);
+        }, error => {
+            console.error(error);
+        });
+    }
+
 
     getText(){
         return this.http.get(DATABASE_URL + 'text/', this.options);
