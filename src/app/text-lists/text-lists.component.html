@@ -3,11 +3,7 @@
 <ng-container *ngIf="_reload">
 <div class="container">
     <div *ngFor="let text of textlists;" >
-        <h3>
-            <a title="Comments">
-                {{text.TextId}}
-            </a>
-        </h3>
+        
 
         <p mat-line *ngIf="text.TextContent">
             {{text.TextContent}}
@@ -16,9 +12,10 @@
         <button mat-button type="button" (click)="seeComment(text)">
         View Comments
         </button>
-        <button mat-button type="button" (click)="deleteComment(text)">
+        <button mat-button type="button" (click)="deleteComment(text)" style="margin-bottom: 25px;">
         Delete Sample
         </button>
+
     </div>
 </div>
 </ng-container>
