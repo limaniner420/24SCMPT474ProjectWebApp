@@ -2,6 +2,7 @@ import { HttpClient, HttpHeaders, HttpParams, HttpResponse } from '@angular/comm
 import { Injectable } from '@angular/core';
 import { textList } from '../sample_texts';
 import { Observable } from 'rxjs';
+import { MessageServiceService } from '../message-service.service';
 
 //const DATABASE_URL = "https://dbserver-4ora5oxrra-uc.a.run.app/"
 const DATABASE_URL = "http://localhost:8080/"
@@ -18,7 +19,7 @@ export class DatabaseService {
     })
     options = { headers: this.headers }
 
-    constructor(private http: HttpClient) {}
+    constructor(private http: HttpClient, private messageService: MessageServiceService) {}
 
     submitText(text: string): void {
         const body = {
@@ -28,6 +29,9 @@ export class DatabaseService {
         console.log(body);
         this.http.post(DATABASE_URL + 'text/', body, this.options).subscribe(response => {
             console.log(response);
+            //Update text list
+            this.messageService.passclick();
+
         }, error => {
             console.error(error);
         });

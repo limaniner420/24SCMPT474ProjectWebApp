@@ -1,7 +1,8 @@
 <h2>List of texts</h2>
 <!-- <button (click)="printing()">click me</button> -->
+<ng-container *ngIf="_reload">
 <div class="container">
-    <div *ngFor="let text of textlists" >
+    <div *ngFor="let text of textlists;" >
         <h3>
             <a title="Comments">
                 {{text.TextId}}
@@ -17,3 +18,4 @@
         </button>
     </div>
 </div>
+</ng-container>

@@ -21,22 +21,25 @@ export class TextListsComponent{
   textlists : any = [];
   temp_commentreply: any;
   subscription: Subscription;
+  _reload = true;
 
   constructor(private dialog: MatDialog, private dbs: DatabaseService, private messageService: MessageServiceService){
     this.subscription = this.messageService.getMessage().subscribe(message =>{
       this.dbs.getText().subscribe(
         (response) => {
           console.log(response);
-          this.textlists = response;
-          this.reloadData();
+          this.textlists = response
+          console.log("This is pushed", response)
+          this.reload()
       }, error => {
           console.error(error);
       });
     })
   }
 
-  reloadData(){
-    this.textlists = [...this.textlists];
+  reload() {
+    setTimeout(() => this._reload = false);
+    setTimeout(() => this._reload = true);
   }
 
   ngOnInit(){

@@ -35,9 +35,6 @@ export class RecipeFormComponent {
         this.ps.proofread(formVValidated.textField)
         if((<HTMLInputElement>document.getElementById('publishCheckBox')).checked){
             this.dbs.submitText(formVValidated.textField)
-
-            //Update text list
-            this.messageService.passclick();
         }
     }
 
