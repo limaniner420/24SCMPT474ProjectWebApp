@@ -13,6 +13,7 @@ import { EditBoxComponent } from '../edit-box/edit-box.component';
 export class EditDialogComponent {
   dialogTitle: string = '';
   dialogID: string = '';
+  textContent: string = '';
 
   @Output() submitClicked = new EventEmitter<any>();
 
@@ -23,6 +24,7 @@ export class EditDialogComponent {
   ngOnInit() {
     this.dialogTitle = this.data.title;
     this.dialogID = this.data.textID;
+    this.textContent = this.data.textContent;
   }
 
 }

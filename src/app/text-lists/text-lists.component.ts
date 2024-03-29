@@ -98,7 +98,7 @@ export class TextListsComponent{
 
   editText(text: textList): void{
     const dialogRef = this.dialog.open(EditDialogComponent, {
-      data: {title: text.TextContent, textID: text.TextId},
+      data: {title: text.TextContent, textID: text.TextId,  textContent: text.TextContent},
       width: '1200px',
       height: '700px',
     });
