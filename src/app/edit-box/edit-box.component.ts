@@ -27,6 +27,12 @@ export class EditBoxComponent {
     textPublicise: [false]
   })
 
+  ngOnInit() {
+    if (this.textForm) {
+      this.textForm.get('textField')?.setValue(this.inputFromParenttext); // Optional chaining
+    }
+  }
+
   editSubmit(){
     let form = this.textForm
     let formV = form.getRawValue();
