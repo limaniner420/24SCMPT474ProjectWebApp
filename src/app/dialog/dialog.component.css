@@ -2,6 +2,7 @@ div>p{
     color:black;
     word-wrap: break-word;
     overflow-wrap: break-word;
+    white-space: pre-wrap;
 }
 
 h2{
@@ -9,6 +10,7 @@ h2{
     overflow-wrap: break-word;
     max-height: 300px;
     overflow-y : scroll;
+    white-space: pre-wrap;
 }
 
 .mat-dialog-content {
